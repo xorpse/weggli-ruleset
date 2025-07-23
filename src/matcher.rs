@@ -174,8 +174,8 @@ impl RuleMatcher {
 
 #[cfg(test)]
 mod test {
-    use std::fs;
     use super::RuleMatcher;
+    use std::fs;
 
     #[test]
     fn test_strcpy() -> Result<(), Box<dyn std::error::Error>> {
@@ -276,6 +276,29 @@ check pattern:
         let matches = matcher.matches_with(&input, false)?;
 
         assert_eq!(matches.len(), 1);
+
+        Ok(())
+    }
+
+    #[test]
+    fn test_decomp_objdump() -> Result<(), Box<dyn std::error::Error>> {
+        let rule1 = r#"
+id: simple-check
+check pattern:
+- name: check-var
+  pattern: |
+    { unsigned char $var; }
+"#;
+        let input = fs::read_to_string("tests/objdump-disas.c")?;
+
+        let mut matcher = RuleMatcher::from_str(rule1)?;
+        let matches = matcher.matches_with(&input, false)?;
+
+        assert_eq!(matches.len(), 2);
+
+        for m in matches {
+            println!("\n\n{}", m.display(5, 5, true));
+        }
 
         Ok(())
     }

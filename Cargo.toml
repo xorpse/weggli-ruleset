@@ -1,6 +1,6 @@
 [package]
 name = "weggli-ruleset"
-version = "0.1.7"
+version = "0.1.8"
 authors = ["Sam L. Thomas <s@ghost.sh>"]
 description = "Ruleset managment/matching/reporting for weggli patterns"
 license = "MIT"
@@ -17,6 +17,6 @@ rustc-hash = "2"
 serde = { version = "1", features = ["derive", "rc"] }
 serde_yaml = { version = "0.0.12", package = "serde_yml" }
 thiserror = "1"
-tree-sitter = "0.24"
+tree-sitter = "0.25"
 walkdir = "2"
 weggli = { version = "0.2", package = "wegglix" }
