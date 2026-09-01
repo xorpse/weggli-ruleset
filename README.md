@@ -1,3 +1,5 @@
+
+
 # weggli-ruleset
 
 This is a utility crate to help manage weggli patterns. To do so, it provides a
@@ -42,7 +44,7 @@ check-patterns:
 
 ```rust
 use std::fs;
-use weggli_ruleset::RuleMatcher;
+use weggli_ruleset::matcher::RuleMatcher;
 
 let mut matcher = RuleMatcher::from_directory("rules")?;
 let source = fs::read_to_string("tests/test.c")?;
